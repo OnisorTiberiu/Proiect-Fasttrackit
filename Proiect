@@ -1,0 +1,34 @@
+package co.selenium.demo;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+
+public class Demo {
+
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.internet.exlorer", "C:\\Users\\titan\\Downloads\\IEDriverServer_x64_3.150.1 (1).zip\\EdgeDriver.exe");
+		WebDriver driver = new EdgeDriver();
+		driver.get("http://testfasttrackit.info/selenium-test/");
+		driver.findElement(By.className("label")).click();
+		driver.findElement(By.className("last")).click();
+		driver.findElement(By.name("email")).sendKeys("tester@fasttrackit.com");
+		driver.findElement(By.name("pass")).sendKeys("12345qwerty");
+		driver.findElement(By.id("search")).sendKeys("pants");
+		Thread.sleep(2000);
+		driver.findElement(By.className("button search-button")).click();
+		Thread.sleep(1000);
+		String at = driver.getTitle();
+		String et = "testfasttrackit";
+		driver.close();
+		if(at.equalsIgnoreCase(et))
+		{
+			System.out.println("test successful");
+		}
+		else
+		{
+			System.out.println("test failed");
+		}
+	}
+
+}
